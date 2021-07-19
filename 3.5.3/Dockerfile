@@ -30,9 +30,8 @@ ARG DISTRO_NAME=zookeeper-3.5.3-beta
 RUN set -ex; \
     apk add --no-cache --virtual .build-deps \
         gnupg; 
-RUN wget -c "http://www.apache.org/dist/zookeeper/$DISTRO_NAME/$DISTRO_NAME.tar.gz"; \
-    wget -q "http://www.apache.org/dist/zookeeper/$DISTRO_NAME/$DISTRO_NAME.tar.gz.asc"; \
-    wget -q "http://www.apache.org/dist/zookeeper/KEYS"; \
+RUN wget -c "https://archive.apache.org/dist/zookeeper/$DISTRO_NAME/$DISTRO_NAME.tar.gz"; \
+    wget -q "https://archive.apache.org/dist/zookeeper/$DISTRO_NAME/$DISTRO_NAME.tar.gz.asc"; \
     export GNUPGHOME="$(mktemp -d)"; \
     gpg --import KEYS ; \
     gpg --batch --verify "$DISTRO_NAME.tar.gz.asc" "$DISTRO_NAME.tar.gz"; \
